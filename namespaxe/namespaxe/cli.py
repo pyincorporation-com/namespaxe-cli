@@ -1,10 +1,9 @@
-from datetime import date, datetime
+from datetime import datetime
 import os
 import json
 import base64
 import requests
 import click
-from decouple import config
 from tabulate import tabulate
 import yaml
 
@@ -16,9 +15,9 @@ class NamespaxeCLI:
     def __init__(self):
         self.config_dir = CONFIG_DIR
         self.config_file = CONFIG_FILE
-        self.base_protocol = config('PROTOCOL')
-        self.login_url = config('LOGIN_URL')
-        self.upstream_url = config('UPSTREAM_URL')
+        self.base_protocol = "https"
+        self.login_url = "auth0.pyincorporation.com/tool-authenticate"
+        self.upstream_url = "pycloud.pyincorporation.com"
 
     def check_config_exists(self):
         if not os.path.exists(self.config_file):

@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='namespaxe',
-    version='0.1.1',
+    version='0.1.2',
     author='Gabriel Nzilantuzu',
     author_email='gabrielnzilantuzu@pyincorporation.com',
     description='A command-line tool for interacting with cloud services.',
@@ -14,7 +14,6 @@ setup(
         'requests',
         'click',
         'pyyaml',
-        'python-decouple',
         'tabulate',
     ],
     entry_points={
