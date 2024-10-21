@@ -8,7 +8,7 @@ setup(
     description='A command-line tool for interacting with cloud services.',
     long_description=open('../README.md').read(),
     long_description_content_type='text/markdown',
-    url='https://github.com/pyincorporation/namespaxe',
+    url='https://github.com/pyincorporation-com/namespaxe-cli',
     packages=find_packages(),
     install_requires=[
         'requests',
