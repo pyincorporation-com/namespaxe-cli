@@ -16,7 +16,7 @@ setup(
         ],
     },
     description='A CLI tool for interacting with pyincorporation servers.',
-    long_description=open('../README.md').read(),
+    long_description=open('../README').read(),
     long_description_content_type='text/markdown',
     author='pyincorporation',
     author_email='contact@pyincorporation.com',
