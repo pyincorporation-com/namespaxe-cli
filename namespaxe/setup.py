@@ -3,22 +3,29 @@ from setuptools import setup, find_packages
 setup(
     name='namespaxe',
     version='0.1.0',
+    author='Gabriel Nzilantuzu',
+    author_email='gabrielnzilantuzu@pyincorporation.com',
+    description='A command-line tool for interacting with cloud services.',
+    long_description=open('../README.md').read(),
+    long_description_content_type='text/markdown',
+    url='https://github.com/pyincorporation/namespaxe',
     packages=find_packages(),
     install_requires=[
         'requests',
-        'tabulate',
         'click',
+        'pyyaml',
         'python-decouple',
+        'tabulate',
     ],
     entry_points={
         'console_scripts': [
             'namespaxe = namespaxe.cli:main',
         ],
     },
-    description='A CLI tool for interacting with pyincorporation servers.',
-    long_description=open('../README.md').read(),
-    long_description_content_type='text/markdown',
-    author='pyincorporation',
-    author_email='contact@pyincorporation.com',
-    url='https://github.com/pyincorporation/namespaxe',
+    classifiers=[
+        'Programming Language :: Python :: 3',
+        'License :: OSI Approved :: MIT License',
+        'Operating System :: OS Independent',
+    ],
+    python_requires='>=3.6',
 )

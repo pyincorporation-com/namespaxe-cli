@@ -57,7 +57,6 @@ class NamespaxeCLI:
             json.dump(data_to_save, f, indent=4)
 
     def get_token(self):
-        """Get CSRF token and session ID from the authentication server."""
         try:
             base_url = f"{self.base_protocol}://auth0.pyincorporation.com/data"
             headers = {"Accept": "application/json"}
@@ -79,8 +78,16 @@ class NamespaxeCLI:
             click.echo(f"An error occurred: {e}")
             return None
 
-    def login_to_server(self, username, password):
-        """Handle login logic."""
+    def login_to_server(self):
+        credentials = self.load_token()
+        if credentials:
+            click.echo("Authenticating with existing credentials...")
+            username = credentials.get('username')
+            password = credentials.get('password')
+        else:
+            username = click.prompt('Username')
+            password = click.prompt('Password', hide_input=True)
+
         token_data = self.get_token()
         if not token_data:
             click.echo("Failed to fetch the authentication token.")
@@ -113,6 +120,8 @@ class NamespaxeCLI:
             if response.status_code == 200:
                 response_data = response.json()
                 if response_data['status']:
+                    click.echo(f'WARNING! Your password will be stored unencrypted in {self.config_file}')
+                    click.echo()
                     click.echo("Login successful!")
                     self.save_token(username, password)
                     return response_data
@@ -393,9 +402,7 @@ def main(command, resource, resource_name, wide):
     cli = NamespaxeCLI()
 
     if command == "login":
-        username = click.prompt('Username')
-        password = click.prompt('Password', hide_input=True)
-        cli.login_to_server(username, password)
+        cli.login_to_server()
     elif command == "list":
         if not resource:
             click.echo(f"Usage of {command} command: namespaxe list <argument>")
