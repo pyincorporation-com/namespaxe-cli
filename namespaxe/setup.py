@@ -6,6 +6,9 @@ setup(
     packages=find_packages(),
     install_requires=[
         'requests',
+        'tabulate',
+        'click',
+        'python-decouple',
     ],
     entry_points={
         'console_scripts': [
