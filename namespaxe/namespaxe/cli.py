@@ -15,7 +15,7 @@ class NamespaxeCLI:
     def __init__(self):
         self.config_dir = CONFIG_DIR
         self.config_file = CONFIG_FILE
-        self.base_protocol = "https"
+        self.base_protocol = "http"
         self.login_url = "auth0.pyincorporation.com/tool-authenticate"
         self.upstream_url = "pycloud.pyincorporation.com"
 
