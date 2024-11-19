@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='namespaxe',
-    version='0.1.2',
+    version='0.1.4',
     author='Gabriel Nzilantuzu',
     author_email='gabrielnzilantuzu@pyincorporation.com',
     description='A command-line tool for interacting with cloud services.',

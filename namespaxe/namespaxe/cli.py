@@ -371,7 +371,10 @@ class NamespaxeCLI:
 
                     click.echo(tabulate(table_data, headers=["Field", "Value"], tablefmt="pretty"))
                 else:
-                    click.echo("No details found for the specified resource.")
+                    if data.get('message'):
+                        click.echo(data.get('message'))
+                    else:
+                        click.echo("No details found for the specified resource.")
             else:
                 error_message = self.handle_http_error(response.status_code)
                 click.echo(error_message)
