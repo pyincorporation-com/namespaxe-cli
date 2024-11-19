@@ -282,7 +282,10 @@ class NamespaxeCLI:
 
                     click.echo(f"Kubernetes configuration for namespace '{namespace_name}' has been installed at {kubeconfig_file}")
                 else:
-                    click.echo("Failed to fetch Kubernetes configuration.")
+                    if data.get('message'):
+                        click.echo(data.get('message'))
+                    else:
+                        click.echo("Failed to fetch Kubernetes configuration.")
             else:
                 error_message = self.handle_http_error(response.status_code)
                 click.echo(error_message)
