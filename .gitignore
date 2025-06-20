@@ -36,3 +36,6 @@ venv.bak/
 # OS-specific files
 .DS_Store
 Thumbs.db
+
+deb_dist
+*.tar.gz
