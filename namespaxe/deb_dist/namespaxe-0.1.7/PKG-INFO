@@ -1,0 +1,27 @@
+Metadata-Version: 2.2
+Name: namespaxe
+Version: 0.1.7
+Summary: A command-line tool for interacting with cloud services.
+Home-page: https://github.com/pyincorporation-com/namespaxe-cli
+Author: Gabriel Nzilantuzu
+Author-email: gabrielnzilantuzu@pyincorporation.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: requests
+Requires-Dist: click
+Requires-Dist: pyyaml
+Requires-Dist: tabulate
+Dynamic: author
+Dynamic: author-email
+Dynamic: classifier
+Dynamic: description
+Dynamic: description-content-type
+Dynamic: home-page
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary
+
+A command-line tool for interacting with cloud services.
