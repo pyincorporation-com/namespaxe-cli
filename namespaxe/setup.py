@@ -12,7 +12,8 @@ except FileNotFoundError:
 
 setup(
     name='namespaxe',
-    version='0.1.7',
+    packages=["namespaxe"],
+    version='0.1.9',
     author='Gabriel Nzilantuzu',
     author_email='gabrielnzilantuzu@pyincorporation.com',
     description='A command-line tool for interacting with cloud services.',

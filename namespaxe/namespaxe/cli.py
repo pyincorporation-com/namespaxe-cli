@@ -402,33 +402,68 @@ class NamespaxeCLI:
 
     def show_help(self):
         help_text = """
-        namespaxe CLI Tool
+    Namespaxe CLI Tool - Manage your Namespaxe namespaces and cluster resources with ease.
 
-        Commands:
-            login               - Log in to the web server. 
-                                Usage: namespaxe login --username <username> --password <password>
-                                
-            list <resource>     - List resources. 
-                                Usage: namespaxe list <resource> [--wide] [--clean]
-                                Example: namespaxe list ns  --wide
-                                
-            describe <res> <name> - Describe a specific resource.
-                                Usage: namespaxe describe <resource> <resource_name> [--wide] [--clean]
-                                Example: namespaxe describe ns <namespace-name> --wide
+    Usage:
+        namespaxe <command> [arguments] [options]
 
-            config  - Install Kubernetes config for a specific resource.
-                                Usage: namespaxe config <resource> <resource_name>
-                                Example: namespaxe config ns <namespace-name>
+    Commands:
 
-            help                - Show this help menu.
+    login                       Authenticate with the platform and store credentials securely.
+                                Usage:
+                                    namespaxe login
+                                    namespaxe login --username <username> --password <password>
+                                - If no credentials are passed, you'll be prompted interactively.
+                                - Credentials saved to ~/.namespaxe/config.json (base64-encoded).
+                                - Required before performing other actions.
 
-        Options:
-            --wide              - Show extra details when listing or describing resources.
-            --username          - Specify the username for logging into the server.
-            --password          - Specify the password for logging into the server.
-            --clean             - Print raw API response without formatting.
+    list <resource>             List available resources.
+                                Supported: ns (namespaces)
+                                Usage:
+                                    namespaxe list ns
+                                    namespaxe list ns --wide
+                                    namespaxe list ns --clean
+                                - '--wide' shows extra info like cluster, package, created date.
+                                - '--clean' shows raw JSON response (no formatting).
+
+    describe <resource> <name>  Show detailed information about a specific resource.
+                                Supported: ns (namespaces)
+                                Usage:
+                                    namespaxe describe ns <namespace-name>
+                                    namespaxe describe ns <namespace-name> --wide
+                                    namespaxe describe ns <namespace-name> --clean
+                                - '--wide' adds CPU, RAM, pod count, storage limits, etc.
+                                - '--clean' shows raw JSON response for scripts/debugging.
+
+    config <resource> <name>    Install Kubernetes configuration for a given namespace.
+                                Usage:
+                                    namespaxe config ns <namespace-name>
+                                - Writes kubeconfig to ~/.kube/config (creates dir if missing).
+                                - Overwrites existing config file.
+                                - Requires valid access to the namespace.
+
+    help                        Display this help menu.
+                                Usage:
+                                    namespaxe help
+
+    Options:
+
+    --username <value>           Provide username for login (optional, will prompt if omitted).
+    --password <value>           Provide password for login (optional, will prompt if omitted).
+    --wide                       Show extended output (more fields/details).
+    --clean                      Print raw JSON output instead of a formatted table.
+
+    Examples:
+
+    namespaxe login
+    namespaxe list ns --wide
+    namespaxe describe ns my-ns --wide
+    namespaxe config ns my-ns
+
+    For more, visit: https://github.com/pyincorporation-com/namespaxe-cli
         """
         click.echo(help_text)
+
 
 
 @click.command()
